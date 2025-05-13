@@ -9,31 +9,35 @@ const History = () => {
     const [ accountLog, setAccountLog ] = useState(null);
     const [ loading, setLoading ] = useState(true);
 
-    useEffect(() => async () => {
-        console.log(profile.accountId)
-        try {
-            const response = await fetch(`${import.meta.env.VITE_BACK_URL}/transactionsLog`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    accountId: profile.accountid,
-                }),
-            })
+    useEffect(() => {
+        const fetchAccountLog = async () => {
+            console.log(profile.accountId);
+            try {
+                const response = await fetch(`${import.meta.env.VITE_BACK_URL}/transactionsLog`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        accountId: profile.accountid,
+                    }),
+                });
 
-            const data = await response.json()
+                const data = await response.json();
 
-            if (!response.ok) {
-                throw new Error(data.error || 'Error al procesar la transferencia')
+                if (!response.ok) {
+                    throw new Error(data.error || "Error al procesar la transferencia");
+                }
+                setAccountLog(data.result);
+                setLoading(false);
+            } catch (error) {
+                setLoading(false);
+                setError(error.message);
             }
-            setAccountLog(data.result)
-            setLoading(false)
-        } catch (error) {
-            setLoading(false)
-            setError(error.message)
-        }
-    }, [profile])
+        };
+
+        fetchAccountLog();
+    }, [profile]);
 
     const handlePdf = async () => {
         try {
