@@ -1,5 +1,6 @@
 /Obito-back/.env
 /Obito-back/node_modules
+/Obito-back/vercel
 
 /Obito-front/.env
 /Obito-front/node_modules
