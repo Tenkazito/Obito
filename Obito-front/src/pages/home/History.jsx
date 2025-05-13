@@ -10,7 +10,7 @@ const History = () => {
     const [ loading, setLoading ] = useState(true);
 
     useEffect(() => async () => {
-        console.log(import.meta.env.VITE_BACK_URL)
+        console.log(profile.accountId)
         try {
             const response = await fetch(`${import.meta.env.VITE_BACK_URL}/transactionsLog`, {
                 method: 'POST',
