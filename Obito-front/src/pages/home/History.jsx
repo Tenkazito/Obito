@@ -94,9 +94,9 @@ const History = () => {
                     </Table>
             )}
             <div className="flex justify-center pt-4 border-t-1 mt-4 flex-row">
-                <Button onClick={handlePdf} className="tracking-tight">
+                {!loading && <Button onClick={handlePdf} className="tracking-tight">
                 Download Logs
-                </Button>
+                </Button>}
                 {error && <p className="text-red-500">{error}</p>}
                 {loading && <p className="text-gray-500">Loading...</p>}
             </div>

@@ -20,6 +20,10 @@ app.use(cors({
 app.use('/api', bankRoute);
 
 // Rutas (las definiremos más adelante)
+
+app.get('/favicon.ico', (req, res) => res.status(204).end());
+app.get('/favicon.png', (req, res) => res.status(204).end());
+
 app.get('/', (req, res) => {
   res.send('¡Backend del banco funcionando!');
 });
