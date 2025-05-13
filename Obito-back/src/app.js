@@ -13,7 +13,7 @@ const app = express();
 app.use(morgan('dev')); // Logger para solicitudes HTTP
 app.use(express.json()); // Parsear JSON en las solicitudes
 app.use(cors({
-  origin: 'http://localhost:5173'
+  origin: process.env.FRONTEND_URL, // Permitir solicitudes desde el frontend
 }));
 
 // Rutas
