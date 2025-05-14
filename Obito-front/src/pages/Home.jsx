@@ -16,7 +16,7 @@ const Home = () => {
     const { profile } = useProfile();
 
     return (
-      <SidebarProvider defaultOpen={true}>
+      <SidebarProvider defaultOpen={false}>
         <div className="flex h-screen w-screen overflow-hidden bg-background">
           {/* Barra lateral izquierda fija */}
           <AppSidebar />
@@ -30,7 +30,7 @@ const Home = () => {
             </header>
 
             {/* Contenido centrado */}
-            <div className="flex-1 flex items-center justify-center">
+            <div className="flex-1 flex items-center justify-center w-full">
               <Outlet />
             </div>
           </main>

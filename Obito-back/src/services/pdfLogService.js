@@ -34,16 +34,17 @@ const pdfLogService = async (userData) => {
 
         // Configuración de la tabla
         const tableTop = doc.y;
-        const colWidths = [80, 100, 100, 100, 80]; // Ancho de cada columna
+        const colWidths = [80, 80, 100, 100, 100, 80]; // Añadimos una columna para movement_type
         const rowHeight = 20;
 
         // Encabezados de la tabla
         doc.font('Helvetica-Bold');
-        doc.text('ID', 50, tableTop, { width: colWidths[0], align: 'left' });
-        doc.text('Date', 50 + colWidths[0], tableTop, { width: colWidths[1], align: 'left' });
-        doc.text('Account', 50 + colWidths[0] + colWidths[1], tableTop, { width: colWidths[2], align: 'left' });
-        doc.text('Name', 50 + colWidths[0] + colWidths[1] + colWidths[2], tableTop, { width: colWidths[3], align: 'left' });
-        doc.text('Amount', 50 + colWidths[0] + colWidths[1] + colWidths[2] + colWidths[3], tableTop, { width: colWidths[4], align: 'right' });
+        doc.text('Type', 50, tableTop, { width: colWidths[0], align: 'left' });
+        doc.text('ID', 50 + colWidths[0], tableTop, { width: colWidths[1], align: 'left' });
+        doc.text('Date', 50 + colWidths[0] + colWidths[1], tableTop, { width: colWidths[2], align: 'left' });
+        doc.text('Account', 50 + colWidths[0] + colWidths[1] + colWidths[2], tableTop, { width: colWidths[3], align: 'left' });
+        doc.text('Name', 50 + colWidths[0] + colWidths[1] + colWidths[2] + colWidths[3], tableTop, { width: colWidths[4], align: 'left' });
+        doc.text('Amount', 50 + colWidths[0] + colWidths[1] + colWidths[2] + colWidths[3] + colWidths[4], tableTop, { width: colWidths[5], align: 'right' });
         doc.font('Helvetica');
 
         // Línea divisoria debajo de los encabezados
@@ -54,11 +55,12 @@ const pdfLogService = async (userData) => {
         // Filas de la tabla
         accountLog.forEach((log, index) => {
             const y = tableTop + (index + 1) * rowHeight;
-            doc.text(log.movementid, 50, y, { width: colWidths[0], align: 'left' });
-            doc.text(log.logdate, 50 + colWidths[0], y, { width: colWidths[1], align: 'left' });
-            doc.text(log.accountto, 50 + colWidths[0] + colWidths[1], y, { width: colWidths[2], align: 'left' });
-            doc.text(`${log.name} ${log.lastname}`, 50 + colWidths[0] + colWidths[1] + colWidths[2], y, { width: colWidths[3], align: 'left' });
-            doc.text(Number(log.amount).toFixed(2), 50 + colWidths[0] + colWidths[1] + colWidths[2] + colWidths[3], y, { width: colWidths[4], align: 'right' });
+            doc.text(log.movement_type, 50, y, { width: colWidths[0], align: 'left' });
+            doc.text(log.movementid, 50 + colWidths[0], y, { width: colWidths[1], align: 'left' });
+            doc.text(log.logdate, 50 + colWidths[0] + colWidths[1], y, { width: colWidths[2], align: 'left' });
+            doc.text(log.account_id, 50 + colWidths[0] + colWidths[1] + colWidths[2], y, { width: colWidths[3], align: 'left' });
+            doc.text(`${log.name} ${log.lastname}`, 50 + colWidths[0] + colWidths[1] + colWidths[2] + colWidths[3], y, { width: colWidths[4], align: 'left' });
+            doc.text(Number(log.amount).toFixed(2), 50 + colWidths[0] + colWidths[1] + colWidths[2] + colWidths[3] + colWidths[4], y, { width: colWidths[5], align: 'right' });
         });
 
         return doc; // Devolver el documento PDF

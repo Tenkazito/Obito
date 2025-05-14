@@ -11,7 +11,6 @@ const History = () => {
 
     useEffect(() => {
         const fetchAccountLog = async () => {
-            console.log(profile.accountId);
             try {
                 const response = await fetch(`${import.meta.env.VITE_BACK_URL}/transactionsLog`, {
                     method: "POST",
@@ -77,6 +76,7 @@ const History = () => {
                     <TableCaption>Last 20 Movements</TableCaption>
                     <TableHeader>
                         <TableRow>
+                        <TableHead className="w-[100px]">Type</TableHead>
                         <TableHead className="w-[100px]">Log ID</TableHead>
                         <TableHead>Log Date</TableHead>
                         <TableHead>User ID</TableHead>
@@ -87,6 +87,7 @@ const History = () => {
                     <TableBody>
                         {accountLog.map((log) => (
                             <TableRow key={log.movementid}>
+                                <TableCell className="font-medium">{log.movement_type}</TableCell>
                                 <TableCell className="font-medium">{log.movementid}</TableCell>
                                 <TableCell>{ log.logdate }</TableCell>
                                 <TableCell>{log.accountto}</TableCell>
