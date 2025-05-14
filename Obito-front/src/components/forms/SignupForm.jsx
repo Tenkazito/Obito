@@ -190,7 +190,7 @@ const SignupForm = ({ setActiveTab }) => {
                             </div>
                         )}
                         
-                        <Button type="submit">Sign up</Button>
+                        <Button type="submit" className="w-full">Sign up</Button>
                 </form>
             </Form>
         </>

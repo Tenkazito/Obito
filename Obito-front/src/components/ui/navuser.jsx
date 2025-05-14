@@ -42,7 +42,7 @@ export function NavUser({ user }) {
     const { profile } = useProfile()
 
     return (
-        <SidebarMenu className="mb-2">
+        <SidebarMenu className="mb-2 w-60 ml-2">
             <SidebarMenuItem className="">
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
@@ -68,7 +68,7 @@ export function NavUser({ user }) {
                         align="end"
                         sideOffset={4}
                     >
-                        <DropdownMenuLabel className="p-0 font-normal m-0" inset={false}>
+                        <DropdownMenuLabel className="p-0 font-normal m-0 data-[inset]:pl-0" inset={false}>
                             <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                                 <Avatar className="h-8 w-8 rounded-lg">
                                     <AvatarImage src={user.avatar} alt={user.name} className=""/>

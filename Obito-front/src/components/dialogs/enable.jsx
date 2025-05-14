@@ -3,16 +3,19 @@ import { DropdownMenuItem } from "../ui/dropdown-menu";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import { ShieldCheck } from "lucide-react";
 import { useState } from "react";
+import { useProfile } from "../../hooks/useProfile";
+import onClickAccountFetch from "./activeAccountFetch";
 
 const Enable = () => {
   const [open, setOpen] = useState(false);
+  const { profile, updateProfile } = useProfile();
 
   const handleClose = () => {
     setOpen(false);
   };
 
   const handleContinue = () => {
-    // Lógica para habilitar la cuenta
+    onClickAccountFetch(profile.accountid, updateProfile);
     setOpen(false); // Cierra el diálogo después de continuar
   };
 

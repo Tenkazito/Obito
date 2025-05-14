@@ -42,7 +42,7 @@ const Home = () => {
               user={{
                 name: profile.name,
                 email: profile.email,
-                avatar: "https://example.com/avatar.jpg",
+                avatar: "https://upload.wikimedia.org/wikipedia/commons/9/90/Labrador_Retriever_portrait.jpg",
               }}
             />
           </Sidebar>

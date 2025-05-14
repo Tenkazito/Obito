@@ -113,7 +113,7 @@ const LoginForm = () => {
                             </div>
                         )}
 
-                    <Button type="submit">Log in</Button>
+                    <Button type="submit" className="w-full">Log in</Button>
                 </form>
             </Form>
         </>
